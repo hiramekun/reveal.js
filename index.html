@@ -1,49 +1,192 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Takaaki Hirano">
 
-		<title>reveal.js</title>
+    <title>システム工学基礎レポート</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <style>
+        .reveal .slides {
+            text-align: left;
+            font-size:24px;
+        }
+    </style>
+    
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section data-markdown=""
+                 data-separator="^\n---$"
+                 data-separator-vertical="^\n>>>$">
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+ 
+            <script type="text/template">
+                ## システム工学基礎レポート
+                - - -
+                工学部システム創成学科 SDMコース  
+                03-180932  
+                平野隆昭  
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+                ---
+                ### 自分の解決したいシステム（設問1）
+                - - -
+                **将棋の次の一手**
+                 - 将棋の次の一手としてどれを選択するかは、盤面だけではない複雑な構造となっている。
+                
+                 - 今回は、将棋の次の一手に影響を与える要因を考察したい。
+                
+                 - こうすることで、将棋の指し手に影響を与える要因の因果関係を探り、より良い一手を指すためにどのような状態が必要なのかを考察する。
+
+                ---
+                ### 項目のリストアップと構造化（設問2）
+                - - -
+                <img src="https://user-images.githubusercontent.com/20180425/39168646-9e153638-47cf-11e8-935f-4c9d878f9f39.png" height=250>
+                <img src="https://user-images.githubusercontent.com/20180425/39168808-3c1cdfb6-47d0-11e8-96af-2331f6dad8b8.png" height=250>
+                <img src="https://user-images.githubusercontent.com/20180425/39168823-48356c3c-47d0-11e8-97ae-b6129bbd949a.png" height=250>
+                                
+                >>>
+                ### 項目のリスト
+                - - -
+                 1. 自分の残り時間
+                 1. 自分の棋風
+                 1. 盤面が有利か不利か
+                 1. 相手の残り持ち時間
+                 1. 自分の持ち駒
+                 1. 相手の持ち駒
+                 1. 自玉の安全度
+                 1. 相手玉の安全度
+                 1. 相手の棋風
+                 1. 精神状態
+                 1. 対局の大切さ
+                 1. 相手の棋風
+                 1. 自分の棋風
+                 1. 直感
+                 1. 定跡
+                 1. 手筋
+                 1. 知識
+                
+                ---
+                ### ISMの階層構造
+                - - -
+                <img src="https://user-images.githubusercontent.com/20180425/39168939-c293857c-47d0-11e8-95e1-3c24f517f4fa.png" height=250>
+                <img src="https://user-images.githubusercontent.com/20180425/39168944-c7b503d2-47d0-11e8-9c07-90dc6bed49c0.png" height=250>
+                <img src="https://user-images.githubusercontent.com/20180425/39168950-cb2b440e-47d0-11e8-85bb-af6161e4c907.png" height=250>  
+                縦に並んでいるのが、同じ階層の要素である。
+
+                ---
+                ### ISM構造分析
+                - - -
+                ![image](https://user-images.githubusercontent.com/20180425/39168385-9889ebce-47ce-11e8-97a3-916af9f11d54.png)
+                
+                >>>
+                ### ISM考察
+                - - -
+                 - ISMでは一番上のレベル（レベル5）に影響を受けるのではなく、影響を及ぼす因子が入っている（相手の棋力や、重要な対極であるかどうかなどは、自分ではどうしようもない事実である）。これは理にかなっている。
+                 - 推移律を取り除いたこの図でもこのように相関している要素が多く、かなり密接に関わっている要素を自分が選択したと思われる。
+
+                
+                ---
+                ### 項目間の関連を論ずる1（設問3）
+                - - -
+                <img src="https://user-images.githubusercontent.com/20180425/39175149-88cf1996-47e4-11e8-86ac-2950d8079e3e.png" height=250>
+                <img src="https://user-images.githubusercontent.com/20180425/39175160-925d780e-47e4-11e8-90e3-018d5e8064a9.png" height=250>
+                
+                ---
+                ### 項目間の関連を論ずる2（設問3）
+                - - -
+                <img src="https://user-images.githubusercontent.com/20180425/39175168-97b07ea0-47e4-11e8-9778-b539dc0cf21d.png" height=250>
+                <img src="https://user-images.githubusercontent.com/20180425/39175179-9ac95e54-47e4-11e8-8954-19a571cb2078.png" height=250>
+                
+
+                ---
+                ### DEMATEL構造分析
+                - - -
+                ![image](https://user-images.githubusercontent.com/20180425/39168030-3c7aab62-47cd-11e8-9cc8-337ff1f198e8.png)
+                
+                >>>
+                ### DEMATEL考察
+                - - -
+                 - 10番の精神状態が、影響を強く受け、さらには関連度も最も高くなった。
+                 - 17番の知識が、影響を与える因子としては最も高い数値を示し、これは直感的にも理にかなっていると思われる。
+                
+                ---
+                ### 因果ループの考察（設問4）
+                - - -
+                 - ISMを用いた因果関係から、一部を抜粋して因果関係を考察し、より良い指し手を生みだすための方策を考える。
+                
+                 - ISMとDEMATELでわかったことは、精神状態がこのシステムから強く影響を受けさらに関連度が高いということだ。
+                 - そこで、精神状態に影響を及ぼし、かつ精神状態から影響を受けるループを抽出し、その因果ループを考察することにする。
+                
+                >>>
+                <img src="https://user-images.githubusercontent.com/20180425/39180064-e7dbc5fe-47f0-11e8-93c0-4ddcb0eeca18.jpg" height=250>  
+                 - 図を見ればわかるように、精神状態は自分の残り持ち時間、盤面が有利になるかどうかと同一方向に変化する。
+                 - 逆に、相手玉の安全度は精神状態と盤面の有利さに対して、反対方向の影響を与える。（相手玉が安全なほど、精神状態は不安定になり、盤面は不利になる。）
+                
+                 - ここで注目したいのは、反対方向の影響を与える相手玉の安全度である。
+                
+                >>>
+                 - 相手玉の安全度が高まると、次の状態が同時に起こる。
+                
+                   - 精神状態が悪化し、これは盤面の有利さの悪化につながる。
+                   - 盤面の有利さが悪化し、精神状態が悪化する。
+                
+                 - これにより、精神状態の悪化と盤面の悪化が急速に進むことになり、適切な次の一手を指すことが難しくなる。
+                
+                >>>
+                ### 解決策
+                - - -
+                **相手玉の安全度を低くする方針を考える**  
+                
+                解決策としては以下のような方策が考えられる。
+                 - 序盤では、相手玉の陣形が崩れている瞬間に仕掛ける。ただ、これは今までも周知の事実として様々な仕掛けに採用されている方針ではある。
+                
+                 - 相手玉が安全になる前に、相手玉に迫る。急戦を採用することで、相手玉が安全になる前に主導権を握ることができ、適切な次の一手を刺しやすくなる。
+                 - 相手が終盤に守りを固める手を打ってきた場合、その構想が完成する前に切り込んでいく。
+                
+                
+           </script>
+        </section>
+
+   </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
 </html>
